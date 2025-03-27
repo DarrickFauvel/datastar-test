@@ -17,25 +17,45 @@
     <title>Datastar Test</title>
   </head>
   <body>
-    <h1>Testing Datastar</h1>
-    <div id="time">no time yet from server</div>
-    <button data-on-click="@get('/time')">get time from server</button>
+    <h1>Datastar Test</h1>
+    <p>Using server-sent events</p>
+    <fieldset>
+      <legend>CLIENT: Update signal</legend>
+      <input type="text" data-bind-input />
+      <div data-show="$input !== ''" data-text="`Input value: ${$input}`"></div>
+      <button data-on-click="$input = 'clicked!'">
+        Click to update input value
+      </button>
+      <button data-on-click="$input = ''" data-show="$input !== ''">
+        Clear input
+      </button>
+    </fieldset>
 
-    <input type="text" data-bind-input />
-    <p data-show="$input !== ''" data-text="$input"></p>
-    <button data-on-click="$input = 'clicked!'">
-      Click to update input value
-    </button>
+    <fieldset>
+      <legend>SERVER: Get time from server</legend>
+      <div id="time">no time yet from server</div>
+      <button data-on-click="@get('/time')">Click to get server time</button>
+    </fieldset>
 
-    <button data-on-click="@get('/quote')" data-indicator-fetching>
-      Get a random quote
-    </button>
-    <p data-text="$fetching">fetching value here</p>
-    <div id="quote" data-on-load="@get('/quote')" data-indicator-fetching>
-      Quote new quote
-    </div>
-    <div data-class-loading="$fetching" class="indicator">
-      <img src="./images/line-md--loading-twotone-loop.svg" alt="Loading..." />
-    </div>
+    <fieldset>
+      <legend>SERVER: Get random quote from server</legend>
+      <button
+        data-on-click="@get('/quote')"
+        data-indicator-fetching
+        class="flex-d items-center gap-4"
+      >
+        <span>Get a random quote from server</span>
+        <img
+          data-class-loading="$fetching"
+          class="indicator"
+          src="./images/line-md--loading-twotone-loop.svg"
+          alt="Loading..."
+        />
+      </button>
+      <div data-text="`fetching state = ${$fetching}`">fetching value here</div>
+      <div id="quote" data-on-load="@get('/quote')" data-indicator-fetching>
+        Getting new quote from server...
+      </div>
+    </fieldset>
   </body>
 </html>

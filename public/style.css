@@ -1,8 +1,31 @@
 body {
+  font-family: "Nunito", sans-serif;
+}
+
+.flex-d {
   display: flex;
-  flex-direction: column;
-  align-items: start;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.gap-4 {
   gap: 1em;
+}
+
+button {
+  padding-block: 0.5em;
+  padding-inline: 1em;
+  border: 1px solid rgba(165, 42, 42, 0.486);
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: lightgray;
+  transition: all 200ms ease-in-out;
+}
+
+button:hover {
+  background-color: rgba(165, 42, 42, 0.486);
 }
 
 .result {
@@ -10,16 +33,26 @@ body {
   padding: 1em;
 }
 
-/* .loading {
-  display: block;
-  color: red;
-  font-weight: bold;
-} */
-
 .indicator {
-  display: none;
+  opacity: 0;
 }
 
 .indicator.loading {
-  display: block;
+  opacity: 1;
+}
+
+fieldset {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 1em;
+  padding-block: 1.5em;
+  padding-inline: 1em;
+  margin-bottom: 2em;
+  border: 0.3em solid rgba(165, 42, 42, 0.486);
+}
+
+legend {
+  font-weight: 700;
+  padding-inline: 0.3em;
 }
