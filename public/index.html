@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <script
+      type="module"
+      src="https://cdn.jsdelivr.net/gh/starfederation/datastar@v1.0.0-beta.10/bundles/datastar.js"
+    ></script>
+    <title>Datastar Test</title>
+  </head>
+  <body>
+    <h1>Testing Datastar</h1>
+    <div id="time">no time yet from server</div>
+    <button data-on-click="@get('/time')">get time from server</button>
+
+    <input type="text" data-bind-input />
+    <p data-show="$input !== ''" data-text="$input"></p>
+    <button data-on-click="$input = 'clicked!'">
+      Click to update input value
+    </button>
+
+    <button data-on-click="@get('/quote')" data-indicator-fetching>
+      Get a random quote
+    </button>
+    <p data-text="$fetching">fetching value here</p>
+    <div id="quote" data-on-load="@get('/quote')" data-indicator-fetching>
+      Quote new quote
+    </div>
+    <div data-class-loading="$fetching" class="indicator">
+      <img src="./images/line-md--loading-twotone-loop.svg" alt="Loading..." />
+    </div>
+  </body>
+</html>
